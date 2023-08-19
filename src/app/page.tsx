@@ -31,43 +31,43 @@ export default function Home() {
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
 
-  const handleMouseDown = event => {
-    setIsDragging(true);
-    const imgOverlay = imgOverlayRef.current;
-    const imgContainer = imgContainerRef.current;
+  // const handleMouseDown = event => {
+  //   setIsDragging(true);
+  //   const imgOverlay = imgOverlayRef.current;
+  //   const imgContainer = imgContainerRef.current;
 
-    const imgRect = imgOverlay.getBoundingClientRect();
-    const containerRect = imgContainer.getBoundingClientRect();
+  //   const imgRect = imgOverlay.getBoundingClientRect();
+  //   const containerRect = imgContainer.getBoundingClientRect();
 
-    setDragOffset({
-      x: event.clientX - imgRect.left + containerRect.left,
-      y: event.clientY - imgRect.top + containerRect.top,
-    });
+  //   setDragOffset({
+  //     x: event.clientX - imgRect.left + containerRect.left,
+  //     y: event.clientY - imgRect.top + containerRect.top,
+  //   });
 
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
-  };
+  //   document.addEventListener('mousemove', handleMouseMove);
+  //   document.addEventListener('mouseup', handleMouseUp);
+  // };
 
-  const handleMouseMove = event => {
-    if (!isDragging) return;
+  // const handleMouseMove = event => {
+  //   if (!isDragging) return;
 
-    const imgOverlay = imgOverlayRef.current;
-    const imgContainer = imgContainerRef.current;
+  //   const imgOverlay = imgOverlayRef.current;
+  //   const imgContainer = imgContainerRef.current;
 
-    const containerRect = imgContainer.getBoundingClientRect();
+  //   const containerRect = imgContainer.getBoundingClientRect();
 
-    const newX = event.clientX - containerRect.left - dragOffset.x;
-    const newY = event.clientY - containerRect.top - dragOffset.y;
+  //   const newX = event.clientX - containerRect.left - dragOffset.x;
+  //   const newY = event.clientY - containerRect.top - dragOffset.y;
 
-    imgOverlay.style.left = `${newX}px`;
-    imgOverlay.style.top = `${newY}px`;
-  };
+  //   imgOverlay.style.left = `${newX}px`;
+  //   imgOverlay.style.top = `${newY}px`;
+  // };
 
-  const handleMouseUp = () => {
-    setIsDragging(false);
-    document.removeEventListener('mousemove', handleMouseMove);
-    document.removeEventListener('mouseup', handleMouseUp);
-  };
+  // const handleMouseUp = () => {
+  //   setIsDragging(false);
+  //   document.removeEventListener('mousemove', handleMouseMove);
+  //   document.removeEventListener('mouseup', handleMouseUp);
+  // };
 
   const taiLen = () => {
     let iptFile = document.getElementById("ipt-file");
@@ -132,7 +132,7 @@ export default function Home() {
               <Image src="./900x900.png" id="img-bg" />
               <Image src={thongTin.FileSrc} id="img-overlay"
                 ref={imgOverlayRef}
-                onMouseDown={handleMouseDown}
+              // onMouseDown={handleMouseDown}
               />
               {/* <Form.Range id="ipt-range-scale" /> */}
               {/* <Form.Range id="ipt-range-moveY" />
