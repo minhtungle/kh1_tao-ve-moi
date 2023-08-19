@@ -117,13 +117,14 @@ a {
   box-shadow: 10px 5px 10px black;
 }
 #img-container {
-  width: 100%;
-  aspect-ratio: 1/1;
-  overflow: hidden;
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  max-width: 550px;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  position: relative;
 }
 #img-bg {
   position: absolute;
