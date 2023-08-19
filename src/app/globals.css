@@ -83,6 +83,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background:#58b7aa !important;
 }
 
 body {
@@ -104,4 +105,51 @@ a {
   html {
     color-scheme: dark;
   }
+}
+.main-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid black; */
+  padding: 1rem;
+  background-color: #54c0b2;
+  box-shadow: 10px 5px 10px black;
+}
+#img-container {
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#img-bg {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+#img-overlay {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  transform: translate(0px, 0px) scale(1);
+}
+#ipt-range-moveY {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+}
+#ipt-range-scale {
+    position: absolute;
+    z-index: 3;
+    right: -45%;
+    transform: rotate(90deg);
+}
+#ipt-range-moveX {
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
 }
