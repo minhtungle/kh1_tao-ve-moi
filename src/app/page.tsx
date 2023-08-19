@@ -8,7 +8,9 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import { Icon } from './components/Icon';
 import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ToggleButton from 'react-bootstrap/ToggleButton';
+import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
+
 import Modal from 'react-bootstrap/Modal';
 import html2canvas from 'html2canvas';
 
@@ -17,7 +19,13 @@ interface ThongTinDto {
   HoTen?: string,
   MaVi?: string
 };
+interface ViTriAnhDto {
+  translateX: number,
+  translateY: number,
+  scale: number
+};
 export default function Home() {
+  const imgContainerRef = useRef<HTMLDivElement>(null);
   const [modal, setModal] = useState(false);
   const [validated, setValidated] = useState(false);
   const [thongTin, setThongTin] = useState<ThongTinDto>({
@@ -25,51 +33,66 @@ export default function Home() {
     HoTen: "",
     MaVi: ""
   });
-
-  const imgOverlayRef = useRef(null);
-  const imgContainerRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-
-  // const handleMouseDown = event => {
-  //   setIsDragging(true);
-  //   const imgOverlay = imgOverlayRef.current;
-  //   const imgContainer = imgContainerRef.current;
-
-  //   const imgRect = imgOverlay.getBoundingClientRect();
-  //   const containerRect = imgContainer.getBoundingClientRect();
-
-  //   setDragOffset({
-  //     x: event.clientX - imgRect.left + containerRect.left,
-  //     y: event.clientY - imgRect.top + containerRect.top,
-  //   });
-
-  //   document.addEventListener('mousemove', handleMouseMove);
-  //   document.addEventListener('mouseup', handleMouseUp);
-  // };
-
-  // const handleMouseMove = event => {
-  //   if (!isDragging) return;
-
-  //   const imgOverlay = imgOverlayRef.current;
-  //   const imgContainer = imgContainerRef.current;
-
-  //   const containerRect = imgContainer.getBoundingClientRect();
-
-  //   const newX = event.clientX - containerRect.left - dragOffset.x;
-  //   const newY = event.clientY - containerRect.top - dragOffset.y;
-
-  //   imgOverlay.style.left = `${newX}px`;
-  //   imgOverlay.style.top = `${newY}px`;
-  // };
-
-  // const handleMouseUp = () => {
-  //   setIsDragging(false);
-  //   document.removeEventListener('mousemove', handleMouseMove);
-  //   document.removeEventListener('mouseup', handleMouseUp);
-  // };
-
+  const [viTriAnh, setViTriAnh] = useState<ViTriAnhDto>({
+    translateX: 0,
+    translateY: 0,
+    scale: 1
+  });
+  const anhStyle = {
+    transform: `translate(${viTriAnh.translateX}rem, ${viTriAnh.translateY}rem) scale(${viTriAnh.scale})`,
+  }
+  //#region Xử lý ảnh
+  const thayDoiViTriAnh = (p: string) => {
+    switch (p) {
+      case "up":
+        setViTriAnh(prev => ({
+          ...prev,
+          translateY: prev.translateY - 1,
+        }));
+        break;
+      case "down":
+        setViTriAnh(prev => ({
+          ...prev,
+          translateY: prev.translateY + 1,
+        }));
+        break;
+      case "left":
+        setViTriAnh(prev => ({
+          ...prev,
+          translateX: prev.translateX - 1,
+        }));
+        break;
+      case "right":
+        setViTriAnh(prev => ({
+          ...prev,
+          translateX: prev.translateX + 1,
+        }));
+        break;
+      case "in":
+        setViTriAnh(prev => ({
+          ...prev,
+          scale: prev.scale + .1,
+        }));
+        break;
+      case "out":
+        setViTriAnh(prev => ({
+          ...prev,
+          scale: prev.scale - .1,
+        }));
+        break;
+      default:
+        setViTriAnh(prev => ({
+          translateX: 0,
+          translateY: 0,
+          scale: 1
+        }))
+        break;
+    };
+  };
+  //#endregion
+  //#region Xử lý thông tin
   const taiLen = () => {
+    thayDoiViTriAnh("macdinh");
     let iptFile = document.getElementById("ipt-file");
     iptFile?.addEventListener("change", function (e: any) {
       let file = e.target.files[0];
@@ -108,12 +131,12 @@ export default function Home() {
             link.href = imgData;
             link.download = imgName;
             link.click();
+            // thayDoiViTriAnh("macdinh");
+            setModal(false);
           })
           .catch(error => {
             console.error('Error creating combined image:', error);
           });
-
-
       };
     };
   };
@@ -123,42 +146,78 @@ export default function Home() {
       ...cur
     }))
   };
+  //#endregion
   return (
     <main className={styles.main}>
       <Container>
         <Row>
-          <Col className="main-container">
+          <Col className="main-container box-shadow">
             <div id="img-container" ref={imgContainerRef}>
+              {/* Btn - vị trí */}
+              <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveUp" onClick={() => thayDoiViTriAnh("up")}>
+                <Icon
+                  iconName="CaretUpFill"
+                  color=""
+                  className="align-center" />
+              </Button>
+              <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveDown" onClick={() => thayDoiViTriAnh("down")}>
+                <Icon
+                  iconName="CaretDownFill"
+                  color=""
+                  className="align-center" />
+              </Button>
+              <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveLeft" onClick={() => thayDoiViTriAnh("left")}>
+                <Icon
+                  iconName="CaretLeftFill"
+                  color=""
+                  className="align-center" />
+              </Button>
+              <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveRight" onClick={() => thayDoiViTriAnh("right")}>
+                <Icon
+                  iconName="CaretRightFill"
+                  color=""
+                  className="align-center" />
+              </Button>
+              <Button className="box-shadow" variant="secondary" size="sm" id="btn-scaleUp" onClick={() => thayDoiViTriAnh("in")}>
+                <Icon
+                  iconName="ZoomIn"
+                  color=""
+                  className="align-center" />
+              </Button>
+              <Button className="box-shadow" variant="secondary" size="sm" id="btn-scaleDown" onClick={() => thayDoiViTriAnh("out")}>
+                <Icon
+                  iconName="ZoomOut"
+                  color=""
+                  className="align-center" />
+              </Button>
+              {/* Ảnh */}
               <Image src="./900x900.png" id="img-bg" />
               <Image src={thongTin.FileSrc} id="img-overlay"
-                ref={imgOverlayRef}
-              // onMouseDown={handleMouseDown}
-              />
-              {/* <Form.Range id="ipt-range-scale" /> */}
-              {/* <Form.Range id="ipt-range-moveY" />
-              <Form.Range id="ipt-range-moveX" /> */}
+                style={{
+                  transform: `translate(${viTriAnh.translateX}rem, ${viTriAnh.translateY}rem) scale(${viTriAnh.scale})`
+                }} />
             </div>
 
             <div className="text-center w-100">
               <input type="file" id="ipt-file" accept=".png, .jpg, .jpeg" hidden />
-              <ButtonGroup aria-label="Basic example" className="m-2 w-100">
-                <Button variant="outline-primary" onClick={() => taiLen()}>
+              <ToggleButtonGroup className="my-2 w-100" type="radio" name="options" defaultValue={1}>
+                <ToggleButton id="btn-tailen" value={1} onClick={() => taiLen()}>
                   <Icon
                     iconName="Upload"
                     color=""
                     className="align-center" />
                   &ensp;
                   Tải lên
-                </Button>
-                <Button variant="outline-primary" onClick={() => setModal(true)}>
+                </ToggleButton>
+                <ToggleButton id="btn-taixuong" value={2} onClick={() => setModal(true)}>
                   <Icon
                     iconName="Download"
                     color=""
                     className="align-center" />
                   &ensp;
                   Tải xuống
-                </Button>
-              </ButtonGroup>
+                </ToggleButton>
+              </ToggleButtonGroup>
             </div>
           </Col>
         </Row>
