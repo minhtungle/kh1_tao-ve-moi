@@ -151,6 +151,7 @@ export default function Home() {
     <main>
       <Container className="position-relative" id="section-thumoi">
         <img src="./section-thumoi/img-banner.png" id="thumoi-img-banner" />
+        {/* Banner-header */}
         <div className="" id="thumoi-header-container">
           <Row>
             {/* <Col className="text-center">
@@ -164,50 +165,54 @@ export default function Home() {
           </Row>
         </div>
         <img src="./section-thumoi/img-thuyen.png" id="thumoi-img-thuyen" />
-        <div className="box-shadow" id="thumoi-body-container" ref={imgContainerRef}>
-          {/* Btn - vị trí */}
-          <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveUp" onClick={() => thayDoiViTriAnh("up")}>
-            <Icon
-              iconName="CaretUpFill"
-              color=""
-              className="align-center" />
-          </Button>
-          <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveDown" onClick={() => thayDoiViTriAnh("down")}>
-            <Icon
-              iconName="CaretDownFill"
-              color=""
-              className="align-center" />
-          </Button>
-          <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveLeft" onClick={() => thayDoiViTriAnh("left")}>
-            <Icon
-              iconName="CaretLeftFill"
-              color=""
-              className="align-center" />
-          </Button>
-          <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveRight" onClick={() => thayDoiViTriAnh("right")}>
-            <Icon
-              iconName="CaretRightFill"
-              color=""
-              className="align-center" />
-          </Button>
-          <Button className="box-shadow" variant="secondary" size="sm" id="btn-scaleUp" onClick={() => thayDoiViTriAnh("in")}>
-            <Icon
-              iconName="ZoomIn"
-              color=""
-              className="align-center" />
-          </Button>
-          <Button className="box-shadow" variant="secondary" size="sm" id="btn-scaleDown" onClick={() => thayDoiViTriAnh("out")}>
-            <Icon
-              iconName="ZoomOut"
-              color=""
-              className="align-center" />
-          </Button>
-          {/* Ảnh */}
-          <Image src={thongTin.FileSrc} id="img-overlay"
-            style={{
-              transform: `translate(${viTriAnh.translateX}rem, ${viTriAnh.translateY}rem) scale(${viTriAnh.scale})`
-            }} />
+        {/* Banner-body */}
+        <Button className="box-shadow" variant="secondary" size="sm" id="btn-scaleUp" onClick={() => thayDoiViTriAnh("in")}>
+          <Icon
+            iconName="ZoomIn"
+            color=""
+            className="align-center" />
+        </Button>
+        <Button className="box-shadow" variant="secondary" size="sm" id="btn-scaleDown" onClick={() => thayDoiViTriAnh("out")}>
+          <Icon
+            iconName="ZoomOut"
+            color=""
+            className="align-center" />
+        </Button>
+        <div id="thumoi-body-container" ref={imgContainerRef}>
+          <div id="thumoi-body-img-container">
+            {/* Btn - vị trí */}
+            <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveUp" onClick={() => thayDoiViTriAnh("up")}>
+              <Icon
+                iconName="CaretUpFill"
+                color=""
+                className="align-center" />
+            </Button>
+            <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveDown" onClick={() => thayDoiViTriAnh("down")}>
+              <Icon
+                iconName="CaretDownFill"
+                color=""
+                className="align-center" />
+            </Button>
+            <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveLeft" onClick={() => thayDoiViTriAnh("left")}>
+              <Icon
+                iconName="CaretLeftFill"
+                color=""
+                className="align-center" />
+            </Button>
+            <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveRight" onClick={() => thayDoiViTriAnh("right")}>
+              <Icon
+                iconName="CaretRightFill"
+                color=""
+                className="align-center" />
+            </Button>
+            {/* Ảnh */}
+            <Image src={thongTin.FileSrc} id="img-overlay"
+              style={{
+                transform: `translate(${viTriAnh.translateX}rem, ${viTriAnh.translateY}rem) scale(${viTriAnh.scale})`
+              }} />
+          </div>
         </div>
+        {/* Banner-footer */}
         <div className="" id="thumoi-footer-container">
           {/* Kính mời */}
           <Row>
@@ -223,7 +228,7 @@ export default function Home() {
           </Row>
           {/* Tham gia */}
           <Row>
-            <Col className="text-center p-1">
+            <Col className="text-center pb-1">
               <img src="./section-thumoi/img-thamgia.png" id="thumoi-img-thamgia" />
             </Col>
           </Row>
