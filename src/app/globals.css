@@ -40,6 +40,31 @@
   --card-border-rgb: 131, 134, 135;
 }
 
+@font-face{
+  font-family: "BeVietNam-Bold";
+  src: url("~/public/fonts/BeVietnam-Bold.ttf") format("truetype");
+}
+@font-face{
+  font-family: "BeVietNam-ExtraBold";
+  src: url("~/public/fonts/BeVietnam-ExtraBold.ttf") format("truetype");
+}
+@font-face{
+  font-family: "BeVietNam-Light";
+  src: url("~/public/fonts/BeVietnam-Light.ttf") format("truetype");
+}
+@font-face{
+  font-family: "BeVietNam-Regular";
+  src: url("~/public/fonts/BeVietnam-Regular.ttf") format("truetype");
+}
+@font-face{
+  font-family: "BeVietNam-SemiBold";
+  src: url("~/public/fonts/BeVietnam-SemiBold.ttf") format("truetype");
+}
+@font-face{
+  font-family: "Valky-Bold";
+  src: url("~/public/fonts/Valky-Bold.otf") format("truetype");
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -106,33 +131,28 @@ a {
     color-scheme: dark;
   }
 }
+main {
+  width: 100vw;
+  height: 100vh;
+}
 .box-shadow {
   box-shadow: 10px 5px 10px black;
 }
-.main-container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* border: 1px solid black; */
-  padding: 1rem;
-  background-color: #54c0b2;
+
+.gallery > img {
+  grid-area: 1/1;
+  width: 130px;
+  aspect-ratio: 0.866;
+  object-fit: cover;
+  clip-path: polygon(0% 25%,0% 75%,50% 100%,100% 75%,100% 25%,50% 0);
+  transform: translate(var(--_x,0),var(--_y,0)) scale(var(--_t,1));
+  cursor: pointer;
+  transition: .2s linear;
 }
-#img-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 550px;
-  aspect-ratio: 1/1;
-  overflow: hidden;
-  position: relative;
-}
-#img-bg {
-  position: absolute;
-  z-index: 2;
-  width: 100%;
-  aspect-ratio: 1/1;
+.gallery > img:hover {
+  filter: grayscale(0);
+  z-index: 1;
+  --_t: 1.2;
 }
 #img-overlay {
   position: absolute;
@@ -172,4 +192,115 @@ a {
   right: 1rem;
   top: 4rem;
   z-index: 3;
+}
+
+.ff-BeVietNam-Bold {
+  font-family: "BeVietNam-Bold";
+}
+.ff-BeVietNam-ExtraBold {
+  font-family: "BeVietNam-ExtraBold";
+}
+.ff-BeVietNam-Light {
+  font-family: "BeVietNam-Light";
+}
+.ff-BeVietNam-Regular {
+  font-family: "BeVietNam-Regular";
+}
+.ff-BeVietNam-SemiBold {
+  font-family: "BeVietNam-SemiBold";
+}
+.ff-Valky-Bold {
+  font-family: "Valky-Bold";
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #ff8a00 0%, #dd4c4f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Section thu moi */
+#section-thumoi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#thumoi-img-banner {
+  width: 100%;
+  object-fit: cover;
+}
+#thumoi-img-thuyen {
+  position: absolute;
+  transform: translateY(-15%);
+
+  width: 60%;
+
+  animation: floating 20s infinite ease-in-out;
+}
+#thumoi-img-logo{
+  width: 55%;
+}
+#thumoi-img-tieude{
+  transform: translateY(15%);
+  width: 70%;
+  /* animation: zoom 2s infinite ease-in-out; */
+}
+#thumoi-img-kinhmoi{
+  width: 35%;
+}
+#thumoi-img-thamgia{
+  width: 17%;
+}
+
+#thumoi-img-thoigian, #thumoi-img-diadiem {
+  width: 55%;
+}
+
+#thumoi-img-doitac {
+  width: 70%;
+}
+
+#thumoi-header-container {
+  position: absolute;
+  top: 0;
+}
+
+#thumoi-body-container {
+  position: absolute;
+  transform: translateY(45%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30%;
+  max-width: 550px;
+  aspect-ratio: 1/1;
+
+  overflow: hidden;
+  clip-path: polygon(0% 25%,0% 75%,50% 100%,100% 75%,100% 25%,50% 0);
+}
+
+#thumoi-footer-container {
+  position: absolute;
+  bottom: 0;
+}
+@keyframes floating {
+  0%   { transform: translate(0%, -15%) rotate(0deg) scale(1); }
+  10%  { transform: translate(4%, -19%) rotate(-4deg) scale(1.05); }
+  20%  { transform: translate(0%, -15%) rotate(0deg) scale(1); }
+  30%  { transform: translate(4%, -19%) rotate(-4deg) scale(1.05); }
+  40%  { transform: translate(0%, -15%) rotate(0deg) scale(1); }
+  50%  { transform: translate(4%, -19%) rotate(-4deg) scale(1.05); }
+  60%  { transform: translate(0%, -15%) rotate(0deg) scale(1); }
+  70%  { transform: translate(4%, -19%) rotate(-4deg) scale(1.05); }
+  80%  { transform: translate(0%, -15%) rotate(0deg) scale(1); }
+  90%  { transform: translate(4%, -19%) rotate(-4deg) scale(1.05); }
+  100% { transform: translate(0%, -15%) rotate(0deg) scale(1); } 
+}
+@keyframes zoom {
+  0%   {transform: scale(1);}
+  100% {transform: scale(.9);}
 }

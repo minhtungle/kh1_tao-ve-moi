@@ -29,7 +29,7 @@ export default function Home() {
   const [modal, setModal] = useState(false);
   const [validated, setValidated] = useState(false);
   const [thongTin, setThongTin] = useState<ThongTinDto>({
-    FileSrc: "./900x900.png",
+    FileSrc: "./avt.jpeg",
     HoTen: "",
     MaVi: ""
   });
@@ -148,79 +148,100 @@ export default function Home() {
   };
   //#endregion
   return (
-    <main className={styles.main}>
-      <Container>
-        <Row>
-          <Col className="main-container box-shadow">
-            <div id="img-container" ref={imgContainerRef}>
-              {/* Btn - vị trí */}
-              <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveUp" onClick={() => thayDoiViTriAnh("up")}>
-                <Icon
-                  iconName="CaretUpFill"
-                  color=""
-                  className="align-center" />
-              </Button>
-              <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveDown" onClick={() => thayDoiViTriAnh("down")}>
-                <Icon
-                  iconName="CaretDownFill"
-                  color=""
-                  className="align-center" />
-              </Button>
-              <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveLeft" onClick={() => thayDoiViTriAnh("left")}>
-                <Icon
-                  iconName="CaretLeftFill"
-                  color=""
-                  className="align-center" />
-              </Button>
-              <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveRight" onClick={() => thayDoiViTriAnh("right")}>
-                <Icon
-                  iconName="CaretRightFill"
-                  color=""
-                  className="align-center" />
-              </Button>
-              <Button className="box-shadow" variant="secondary" size="sm" id="btn-scaleUp" onClick={() => thayDoiViTriAnh("in")}>
-                <Icon
-                  iconName="ZoomIn"
-                  color=""
-                  className="align-center" />
-              </Button>
-              <Button className="box-shadow" variant="secondary" size="sm" id="btn-scaleDown" onClick={() => thayDoiViTriAnh("out")}>
-                <Icon
-                  iconName="ZoomOut"
-                  color=""
-                  className="align-center" />
-              </Button>
-              {/* Ảnh */}
-              <Image src="./900x900.png" id="img-bg" />
-              <Image src={thongTin.FileSrc} id="img-overlay"
-                style={{
-                  transform: `translate(${viTriAnh.translateX}rem, ${viTriAnh.translateY}rem) scale(${viTriAnh.scale})`
-                }} />
-            </div>
-
-            <div className="text-center w-100">
-              <input type="file" id="ipt-file" accept=".png, .jpg, .jpeg" hidden />
-              <ToggleButtonGroup className="my-2 w-100" type="radio" name="options" defaultValue={1}>
-                <ToggleButton id="btn-tailen" value={1} onClick={() => taiLen()}>
-                  <Icon
-                    iconName="Upload"
-                    color=""
-                    className="align-center" />
-                  &ensp;
-                  Tải lên
-                </ToggleButton>
-                <ToggleButton id="btn-taixuong" value={2} onClick={() => setModal(true)}>
-                  <Icon
-                    iconName="Download"
-                    color=""
-                    className="align-center" />
-                  &ensp;
-                  Tải xuống
-                </ToggleButton>
-              </ToggleButtonGroup>
-            </div>
-          </Col>
-        </Row>
+    <main>
+      <Container className="position-relative" id="section-thumoi">
+        <img src="./section-thumoi/img-banner.png" id="thumoi-img-banner" />
+        <div className="" id="thumoi-header-container">
+          <Row>
+            {/* <Col className="text-center">
+              <img src="./section-thumoi/img-logo.png" id="thumoi-img-logo" />
+            </Col> */}
+          </Row>
+          <Row>
+            <Col className="text-center">
+              <img src="./section-thumoi/img-tieude.png" id="thumoi-img-tieude" />
+            </Col>
+          </Row>
+        </div>
+        <img src="./section-thumoi/img-thuyen.png" id="thumoi-img-thuyen" />
+        <div className="box-shadow" id="thumoi-body-container" ref={imgContainerRef}>
+          {/* Btn - vị trí */}
+          <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveUp" onClick={() => thayDoiViTriAnh("up")}>
+            <Icon
+              iconName="CaretUpFill"
+              color=""
+              className="align-center" />
+          </Button>
+          <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveDown" onClick={() => thayDoiViTriAnh("down")}>
+            <Icon
+              iconName="CaretDownFill"
+              color=""
+              className="align-center" />
+          </Button>
+          <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveLeft" onClick={() => thayDoiViTriAnh("left")}>
+            <Icon
+              iconName="CaretLeftFill"
+              color=""
+              className="align-center" />
+          </Button>
+          <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveRight" onClick={() => thayDoiViTriAnh("right")}>
+            <Icon
+              iconName="CaretRightFill"
+              color=""
+              className="align-center" />
+          </Button>
+          <Button className="box-shadow" variant="secondary" size="sm" id="btn-scaleUp" onClick={() => thayDoiViTriAnh("in")}>
+            <Icon
+              iconName="ZoomIn"
+              color=""
+              className="align-center" />
+          </Button>
+          <Button className="box-shadow" variant="secondary" size="sm" id="btn-scaleDown" onClick={() => thayDoiViTriAnh("out")}>
+            <Icon
+              iconName="ZoomOut"
+              color=""
+              className="align-center" />
+          </Button>
+          {/* Ảnh */}
+          <Image src={thongTin.FileSrc} id="img-overlay"
+            style={{
+              transform: `translate(${viTriAnh.translateX}rem, ${viTriAnh.translateY}rem) scale(${viTriAnh.scale})`
+            }} />
+        </div>
+        <div className="" id="thumoi-footer-container">
+          {/* Kính mời */}
+          <Row>
+            <Col className="text-center p-1">
+              <img src="./section-thumoi/img-kinhmoi.png" id="thumoi-img-kinhmoi" />
+            </Col>
+          </Row>
+          {/* Họ tên */}
+          <Row>
+            <Col className="text-center">
+              <h5 className="ff-Valky-Bold text-white">Doanh nhân: Hoà Phạm</h5>
+            </Col>
+          </Row>
+          {/* Tham gia */}
+          <Row>
+            <Col className="text-center p-1">
+              <img src="./section-thumoi/img-thamgia.png" id="thumoi-img-thamgia" />
+            </Col>
+          </Row>
+          {/* Địa điểm - Thời gian - Đối tác */}
+          <Row>
+            <Col className="text-center">
+              <img src="./section-thumoi/img-thoigian.png" id="thumoi-img-thoigian" />
+            </Col>
+            <Col className="text-center">
+              <img src="./section-thumoi/img-diadiem.png" id="thumoi-img-diadiem" />
+            </Col>
+          </Row>
+          <Row>
+            <Col className="text-center p-3">
+              <img src="./section-thumoi/img-doitac.png" id="thumoi-img-doitac" />
+            </Col>
+          </Row>
+        </div>
       </Container>
       <Modal
         show={modal}
@@ -273,6 +294,35 @@ export default function Home() {
           <Button variant="primary" onClick={() => taiXuong()}>Đồng ý</Button>
         </Modal.Footer>
       </Modal>
-    </main>
+      {/* <p className="text-gradient ff-BeVietNam-Bold">ĐẠI HỒNG THUỶ</p>
+      <p className="text-gradient ff-BeVietNam-ExtraBold">ĐẠI HỒNG THUỶ</p>
+      <p className="text-gradient ff-BeVietNam-Light">ĐẠI HỒNG THUỶ</p>
+      <p className="text-gradient ff-BeVietNam-Regular">ĐẠI HỒNG THUỶ</p>
+      <p className="text-gradient ff-BeVietNam-SemiBold">ĐẠI HỒNG THUỶ</p>
+      <p className="text-gradient ff-Valky-Bold">ĐẠI HỒNG THUỶ</p> */}
+      <div className="main-container ">
+        <div className="text-center w-100">
+          <input type="file" id="ipt-file" accept=".png, .jpg, .jpeg" hidden />
+          <ToggleButtonGroup className="my-2 w-100" type="radio" name="options" defaultValue={1}>
+            <ToggleButton id="btn-tailen" value={1} onClick={() => taiLen()}>
+              <Icon
+                iconName="Upload"
+                color=""
+                className="align-center" />
+              &ensp;
+              Tải lên
+            </ToggleButton>
+            <ToggleButton id="btn-taixuong" value={2} onClick={() => setModal(true)}>
+              <Icon
+                iconName="Download"
+                color=""
+                className="align-center" />
+              &ensp;
+              Tải xuống
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </div>
+      </div>
+    </main >
   )
 }
