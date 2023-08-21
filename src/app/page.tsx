@@ -169,8 +169,8 @@ export default function Home() {
               </div>
             </Col>
             <Col md="12" className="text-center d-flex justify-content-center align-items-center flex-column" id="thumoi-hoten-container">
-              <img src="./section-thumoi/img-kinhmoi.png" id="thumoi-img-kinhmoi" />
-              <span className="ff-Valky-Bold text-white" id="thumoi-hoten-text">Doanh nhân: {thongTin.HoTen == "" ? "__________________" : thongTin.HoTen}</span>
+              <img className="" src="./section-thumoi/img-kinhmoi.png" id="thumoi-img-kinhmoi" />
+              <span className="ff-Valky-Bold text-white" id="thumoi-hoten-text">Anh/Chị: {thongTin.HoTen == "" ? "__________________" : thongTin.HoTen}</span>
               <img src="./section-thumoi/img-thamgia.png" id="thumoi-img-thamgia" />
             </Col>
           </Row>
@@ -228,61 +228,61 @@ export default function Home() {
         <Modal.Body>
           <Form noValidate validated={validated}>
             <div className="w-100 text-center d-flex justify-content-center align-items-center flex-column position-relative" id="">
-              {/* Btn - vị trí */}
-              <ButtonToolbar className="mb-3" aria-label="">
-                <ButtonGroup className="me-2" aria-label="1">
-                  <Button variant="secondary" id="btn-tailen" onClick={() => taiLen()}>
-                    <Icon
-                      iconName="Upload"
-                      color=""
-                      className="align-center" />
-                  </Button>
-                </ButtonGroup>
-                <ButtonGroup aria-label="2">
-                  <Button variant="secondary" id="btn-moveUp" onClick={() => thayDoiViTriAnh("up")}>
-                    <Icon
-                      iconName="CaretUpFill"
-                      color=""
-                      className="align-center" />
-                  </Button>
-                  <Button variant="secondary" id="btn-moveDown" onClick={() => thayDoiViTriAnh("down")}>
-                    <Icon
-                      iconName="CaretDownFill"
-                      color=""
-                      className="align-center" />
-                  </Button>
-                  <Button variant="secondary" id="btn-moveLeft" onClick={() => thayDoiViTriAnh("left")}>
-                    <Icon
-                      iconName="CaretLeftFill"
-                      color=""
-                      className="align-center" />
-                  </Button>
-                  <Button variant="secondary" id="btn-moveRight" onClick={() => thayDoiViTriAnh("right")}>
-                    <Icon
-                      iconName="CaretRightFill"
-                      color=""
-                      className="align-center" />
-                  </Button>
-                  <Button variant="secondary" id="btn-scaleUp" onClick={() => thayDoiViTriAnh("in")}>
-                    <Icon
-                      iconName="ZoomIn"
-                      color=""
-                      className="align-center" />
-                  </Button>
-                  <Button variant="secondary" id="btn-scaleDown" onClick={() => thayDoiViTriAnh("out")}>
-                    <Icon
-                      iconName="ZoomOut"
-                      color=""
-                      className="align-center" />
-                  </Button>
-                </ButtonGroup>
-              </ButtonToolbar>
               <div className="thumoi-img-avt-container thumoi-img-avt-container-layer1">
                 <div className="thumoi-img-avt-container thumoi-img-avt-container-layer2">
                   <Image src={thongTin.FileSrc} className="thumoi-img-anhdaidien-tailen" style={anhStyle} />
                 </div>
               </div>
             </div>
+            {/* Btn - vị trí */}
+            <ButtonToolbar className="my-3 justify-content-center" aria-label="">
+              <ButtonGroup className="me-2" aria-label="1">
+                <Button variant="secondary" id="btn-tailen" onClick={() => taiLen()}>
+                  <Icon
+                    iconName="Upload"
+                    color=""
+                    className="align-center" />
+                </Button>
+              </ButtonGroup>
+              <ButtonGroup aria-label="2">
+                <Button variant="secondary" id="btn-moveUp" onClick={() => thayDoiViTriAnh("up")}>
+                  <Icon
+                    iconName="CaretUpFill"
+                    color=""
+                    className="align-center" />
+                </Button>
+                <Button variant="secondary" id="btn-moveDown" onClick={() => thayDoiViTriAnh("down")}>
+                  <Icon
+                    iconName="CaretDownFill"
+                    color=""
+                    className="align-center" />
+                </Button>
+                <Button variant="secondary" id="btn-moveLeft" onClick={() => thayDoiViTriAnh("left")}>
+                  <Icon
+                    iconName="CaretLeftFill"
+                    color=""
+                    className="align-center" />
+                </Button>
+                <Button variant="secondary" id="btn-moveRight" onClick={() => thayDoiViTriAnh("right")}>
+                  <Icon
+                    iconName="CaretRightFill"
+                    color=""
+                    className="align-center" />
+                </Button>
+                <Button variant="secondary" id="btn-scaleUp" onClick={() => thayDoiViTriAnh("in")}>
+                  <Icon
+                    iconName="ZoomIn"
+                    color=""
+                    className="align-center" />
+                </Button>
+                <Button variant="secondary" id="btn-scaleDown" onClick={() => thayDoiViTriAnh("out")}>
+                  <Icon
+                    iconName="ZoomOut"
+                    color=""
+                    className="align-center" />
+                </Button>
+              </ButtonGroup>
+            </ButtonToolbar>
             <Form.Group className="mb-3">
               <Form.Label>Họ và tên <span className="text-danger">*</span></Form.Label>
               <Form.Control
