@@ -131,59 +131,35 @@ a {
     color-scheme: dark;
   }
 }
-main {
-  width: 100vw;
-  height: 100vh;
-}
+
 .box-shadow {
   box-shadow: 10px 5px 10px black;
 }
 
-#img-overlay {
-  z-index: 1;
-  height: 100%;
-  transform: translate(0px, 0px) scale(1);
-}
 /* Btn chỉnh sửa */
+#btn-thaotac-container {
+}
+#btn-chinhsua ~ label, #btn-taixuong ~ label{
+  border-radius: 0;
+}
+
 #btn-moveUp {
-    position: absolute;
-    z-index: 3;
-    top: 1.5rem;
+
 }
 #btn-moveDown {
-    position: absolute;
-    z-index: 3;
-    bottom: 1.5rem;
+  
 }
 #btn-moveLeft {
-    position: absolute;
-    z-index: 3;
-    left: 1rem;
+ 
 }
 #btn-moveRight {
-    position: absolute;
-    z-index: 3;
-    right: 1rem;
+
 }
 #btn-scaleUp {
-  /* position: absolute;
-  right: 1rem;
-  top: 1rem;
-  z-index: 3; */
 
-  transform: translate(10rem, 1.5rem);
-  position: absolute;
-  z-index: 3;
 }
 #btn-scaleDown {
-  /* position: absolute;
-  right: 1rem;
-  top: 4rem;
-  z-index: 3; */
-
-  transform: translate(10rem, 4rem);
-  position: absolute;
-  z-index: 3;
+  
 }
 
 .ff-BeVietNam-Bold {
@@ -208,12 +184,30 @@ main {
 .text-gradient {
   background: linear-gradient(to right, #ff8a00 0%, #dd4c4f 100%);
 }
+/* #test {
+  background: url("~/public/section-thumoi/img-banner.png");
+  aspect-ratio: 1241/1850;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+} */
+.hidden {
+  display: none;
+}
 
 /* Section thu moi */
 #section-thumoi {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: url("~/public/section-thumoi/img-banner.png");
+  aspect-ratio: 1241/1850;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.thumoi-img-anhdaidien-tailen {
+  z-index: 1;
+  height: 100%;
+  transform: translate(0px, 0px) scale(1);
 }
 
 #thumoi-img-banner {
@@ -221,21 +215,14 @@ main {
   object-fit: cover;
 }
 #thumoi-img-thuyen {
-  position: absolute;
-  /* transform: translateY(-15%);
-
-  width: 50%; */
-
-  width: 25%;
-  z-index: 4;
-
+  width: 50%;
+  transform: translate(0%, -15%);
   animation: floating 20s infinite ease-in-out;
 }
 #thumoi-img-logo{
   width: 55%;
 }
 #thumoi-img-tieude{
-  transform: translateY(15%);
   width: 70%;
   /* animation: zoom 2s infinite ease-in-out; */
 }
@@ -247,7 +234,7 @@ main {
 }
 
 #thumoi-img-thoigian, #thumoi-img-diadiem {
-  width: 55%;
+  width: 70%;
 }
 
 #thumoi-img-doitac {
@@ -255,18 +242,25 @@ main {
 }
 
 #thumoi-header-container {
-  position: absolute;
-  top: 0;
+  width: 100%;
 }
 
 #thumoi-body-container {
-  position: absolute;
-  /* transform: translateY(45%); */
-  /* top: 47%; */
+    width: 100%;
+}
 
+.thumoi-img-avt-container {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  border-radius: 50%;
+}
+
+#thumoi-body-container .thumoi-img-avt-container-layer1 {
+  z-index: 1;
+  position: absolute;
+  top: 40%;
 
   background: linear-gradient(to bottom, #58b7aa 0%, #086168 100%);
   width: 35%;
@@ -276,11 +270,7 @@ main {
   overflow: hidden;
   /* clip-path: polygon(0% 25%,0% 75%,50% 100%,100% 75%,100% 25%,50% 0); */
 }
-  #thumoi-body-container > #thumoi-body-img-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+  #thumoi-body-container .thumoi-img-avt-container-layer1 > .thumoi-img-avt-container-layer2 {
     width: 90%;
     aspect-ratio: 1/1;
     border-radius: 50%;
@@ -289,69 +279,54 @@ main {
     /* clip-path: polygon(0% 25%,0% 75%,50% 100%,100% 75%,100% 25%,50% 0); */
   }
 
+#modal-chinhsua .thumoi-img-avt-container-layer1 {
+  background: linear-gradient(to bottom, #58b7aa 0%, #086168 100%);
+  width: 35%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+
+  overflow: hidden;
+  /* clip-path: polygon(0% 25%,0% 75%,50% 100%,100% 75%,100% 25%,50% 0); */
+}
+  #modal-chinhsua .thumoi-img-avt-container-layer1 > .thumoi-img-avt-container-layer2 {
+    width: 90%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+
+    overflow: hidden;
+    /* clip-path: polygon(0% 25%,0% 75%,50% 100%,100% 75%,100% 25%,50% 0); */
+  }
+
+#thumoi-hoten-container {
+  transform: translate(0%, 100%);
+}
+
 #thumoi-footer-container {
   position: absolute;
   bottom: 0;
 }
+
+#thumoi-hoten-text {
+  font-size: 1rem;
+}
+@media (min-width: 770px) {
+  #thumoi-hoten-text {
+    font-size: 2rem;
+  }
+}
+
 @keyframes floating {
-  /* 0%   { transform: translate(0%, -15%) rotate(0deg) ; }
+  0%   { transform: translate(0%, -15%) rotate(-5deg) ; }
   10%  { transform: translate(4%, -19%) rotate(-10deg) ; }
-  20%  { transform: translate(-4%, -15%) rotate(0deg) ; }
+  20%  { transform: translate(-4%, -15%) rotate(-5deg) ; }
   30%  { transform: translate(4%, -19%) rotate(-10deg) ; }
-  40%  { transform: translate(-4%, -15%) rotate(0deg) ; }
+  40%  { transform: translate(-4%, -15%) rotate(-5deg) ; }
   50%  { transform: translate(4%, -19%) rotate(-10deg) ; }
-  60%  { transform: translate(-4%, -15%) rotate(0deg) ; }
+  60%  { transform: translate(-4%, -15%) rotate(-5deg) ; }
   70%  { transform: translate(4%, -19%) rotate(-10deg) ; }
-  80%  { transform: translate(-4%, -15%) rotate(0deg) ; }
+  80%  { transform: translate(-4%, -15%) rotate(-5deg) ; }
   90%  { transform: translate(4%, -19%) rotate(-10deg) ; }
-  100% { transform: translate(0%, -15%) rotate(0deg) ; }  */
-
-  0%   { 
-    transform: translate(-120%, 60%) rotate(-20deg) scaleX(1);
-    z-index: 3;
-   }
-
-  10%  { 
-    transform: translate(-72%, 60%) rotate(-25deg) scaleX(1);
-    z-index: 3;
-  }
-  20%  { 
-    transform: translate(-24%, 60%) rotate(-20deg) scaleX(1);
-    z-index: 3;
-  }
-  30%  { 
-    transform: translate(24%, 60%) rotate(-25deg) scaleX(1);
-    z-index: 3;
-   }
-  40%  { 
-    transform: translate(72%, 60%) rotate(-20deg) scaleX(1);
-    z-index: 3;
-  }
-  50%  { 
-    transform: translate(120%, 60%) rotate(20deg) scaleX(-1);
-    z-index: 1;
-   }
-
-  60%  { 
-    transform: translate(72%, 60%) rotate(20deg) scaleX(-1);
-    z-index: 1;
-   }
-  70%  {
-     transform: translate(24%, 60%) rotate(25deg) scaleX(-1);
-    z-index: 1;
-  }
-  80%  {
-     transform: translate(-24%, 60%) rotate(20deg) scaleX(-1);
-    z-index: 1;
-   }
-  90%  {
-     transform: translate(-72%, 60%) rotate(25deg) scaleX(-1);
-    z-index: 1;
-  }
-  100% { 
-    transform: translate(-120%, 60%) rotate(-20deg) scaleX(1);
-    z-index: 3;
-  } 
+  100% { transform: translate(0%, -15%) rotate(-5deg) ; } 
 }
 @keyframes zoom {
   0%   {transform: scale(1);}
