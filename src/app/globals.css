@@ -141,6 +141,8 @@ a {
 }
 #btn-chinhsua ~ label, #btn-taixuong ~ label{
   border-radius: 0;
+  border: 0px !important;
+  background: linear-gradient(to right, #ff8a00 0%, #dd4c4f 100%);
 }
 
 #btn-moveUp {
@@ -197,8 +199,8 @@ a {
 
 /* Section thu moi */
 #section-thumoi {
-  background: url("~/public/section-thumoi/img-banner.png");
-  aspect-ratio: 1920/4074;
+  background: url("~/public/section-thumoi/video-banner.gif");
+  aspect-ratio: 1920/4066;
   width: 100%;
   background-repeat: no-repeat;
   background-size: contain;
@@ -304,6 +306,8 @@ a {
 #thumoi-footer-container {
   position: absolute;
   bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 #thumoi-hoten-text {
@@ -313,6 +317,31 @@ a {
   #thumoi-hoten-text {
     font-size: 2rem;
   }
+}
+
+/* Section - lịch trình */
+#section-lichtrinh {
+  background: url("~/public/section-lichtrinh/img-lichtrinh.png");
+  aspect-ratio: 4001/2360;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+/* Section - quy định */
+#section-quydinh {
+  background: url("~/public/section-quydinh/img-quydinh.png");
+  aspect-ratio: 4001/2339;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+/* Section - lưu ý */
+#section-luuy {
+  background: url("~/public/section-luuy/img-luuy.png");
+  aspect-ratio: 4001/2607;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 @keyframes floating {

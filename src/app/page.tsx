@@ -142,6 +142,7 @@ export default function Home() {
   //#endregion
   return (
     <main>
+      {/* Thư mời */}
       <Container className="position-relative" id="section-thumoi" ref={sectionThuMoiRef}>
         {/* <img src="./section-thumoi/img-banner.png" id="thumoi-img-banner" /> */}
         {/* Banner-header */}
@@ -184,36 +185,43 @@ export default function Home() {
             <Col className="text-center">
               <img src="./section-thumoi/img-diadiem.png" id="thumoi-img-diadiem" />
             </Col>
-          </Row>
-          <Row>
-            <Col className="text-center p-3">
+            <Col md="12" className="text-center p-3">
               <img src="./section-thumoi/img-doitac.png" id="thumoi-img-doitac" />
             </Col>
           </Row>
         </div>
       </Container>
       {/* Thao tác */}
-      <div className="text-center w-100" id="btn-thaotac-container">
-        <input type="file" id="ipt-file" accept=".png, .jpg, .jpeg" hidden />
-        <ToggleButtonGroup className="w-100" type="radio" name="options" defaultValue={1}>
-          <ToggleButton id="btn-chinhsua" value={1} onClick={() => setModal(true)}>
-            <Icon
-              iconName="Pencil"
-              color=""
-              className="align-center" />
-            &ensp;
-            Chỉnh sửa
-          </ToggleButton>
-          <ToggleButton id="btn-taixuong" value={2} onClick={() => taiXuong()}>
-            <Icon
-              iconName="Download"
-              color=""
-              className="align-center" />
-            &ensp;
-            Tải vé mời
-          </ToggleButton>
-        </ToggleButtonGroup>
-      </div>
+      <Container className="position-relative p-0" id="section-thaotac">
+        <div className="text-center w-100" id="btn-thaotac-container">
+          <input type="file" id="ipt-file" accept=".png, .jpg, .jpeg" hidden />
+          <ToggleButtonGroup className="w-100" type="radio" name="options" defaultValue={1}>
+            <ToggleButton variant="secondary" id="btn-chinhsua" value={1} onClick={() => setModal(true)}>
+              <Icon
+                iconName="Pencil"
+                color=""
+                className="align-center" />
+              &ensp;
+              Chỉnh sửa
+            </ToggleButton>
+            <ToggleButton variant="secondary" id="btn-taixuong" value={2} onClick={() => taiXuong()}>
+              <Icon
+                iconName="Download"
+                color=""
+                className="align-center" />
+              &ensp;
+              Tải vé mời
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </div>
+      </Container>
+      {/* Lịch trình */}
+      <Container className="position-relative" id="section-lichtrinh" />
+      {/* Quy định */}
+      <Container className="position-relative" id="section-quydinh" />
+      {/* Lưu ý */}
+      <Container className="position-relative" id="section-luuy" />
+
       {/* Modal - chỉnh sửa */}
       <Modal
         show={modal}
