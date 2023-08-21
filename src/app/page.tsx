@@ -170,7 +170,7 @@ export default function Home() {
             </Col>
             <Col md="12" className="text-center d-flex justify-content-center align-items-center flex-column" id="thumoi-hoten-container">
               <img className="" src="./section-thumoi/img-kinhmoi.png" id="thumoi-img-kinhmoi" />
-              <span className="ff-Valky-Bold text-white" id="thumoi-hoten-text">Anh/Chị: {thongTin.HoTen == "" ? "__________________" : thongTin.HoTen}</span>
+              <span className="ff-Valky-Bold text-white" id="thumoi-hoten-text">{thongTin.HoTen == "" ? "__________________" : thongTin.HoTen}</span>
               <img src="./section-thumoi/img-thamgia.png" id="thumoi-img-thamgia" />
             </Col>
           </Row>
