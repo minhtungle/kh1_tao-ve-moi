@@ -264,7 +264,7 @@ a {
   position: absolute;
   top: 60%;
 
-  background: linear-gradient(to bottom, #58b7aa 0%, #086168 100%);
+  background: linear-gradient(to bottom, #96e6c1 0%, #6ccca0 100%);
   width: 60%;
   aspect-ratio: 1/1;
   border-radius: 50%;
@@ -273,7 +273,7 @@ a {
   /* clip-path: polygon(0% 25%,0% 75%,50% 100%,100% 75%,100% 25%,50% 0); */
 }
   #thumoi-body-container .thumoi-img-avt-container-layer1 > .thumoi-img-avt-container-layer2 {
-    width: 90%;
+    width: 97%;
     aspect-ratio: 1/1;
     border-radius: 50%;
 
@@ -282,7 +282,7 @@ a {
   }
 
 #modal-chinhsua .thumoi-img-avt-container-layer1 {
-  background: linear-gradient(to bottom, #58b7aa 0%, #086168 100%);
+  background: linear-gradient(to bottom, #96e6c1 0%, #6ccca0 100%);
   width: 80%;
   aspect-ratio: 1/1;
   border-radius: 50%;
@@ -291,7 +291,7 @@ a {
   /* clip-path: polygon(0% 25%,0% 75%,50% 100%,100% 75%,100% 25%,50% 0); */
 }
   #modal-chinhsua .thumoi-img-avt-container-layer1 > .thumoi-img-avt-container-layer2 {
-    width: 90%;
+    width: 97%;
     aspect-ratio: 1/1;
     border-radius: 50%;
 
@@ -357,7 +357,7 @@ a {
   90%  { transform: translate(4%, -4%) rotate(-10deg) ; }
   100% { transform: translate(0%, 0%) rotate(-5deg) ; } 
 }
-@keyframes zoom {
-  0%   {transform: scale(1);}
-  100% {transform: scale(.9);}
+@keyframes spin {
+  0%   {transform: rotage(0deg);}
+  100% {transform: rotage(360deg);}
 }

@@ -13,6 +13,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Modal from 'react-bootstrap/Modal';
 import html2canvas from 'html2canvas';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+
 interface ThongTinDto {
   FileSrc?: string,
   HoTen?: string,
@@ -40,6 +41,30 @@ export default function Home() {
   const anhStyle = {
     transform: `translate(${viTriAnh.translateX}rem, ${viTriAnh.translateY}rem) scale(${viTriAnh.scale})`,
   }
+  //#region Mail
+  // const client = new SMTPClient({
+  //   user: 'MinhTung',
+  //   password: 'Mail2023@1',
+  //   host: 'mrtungpro123@gmail.com',
+  //   ssl: true,
+  // });
+
+  const guiMail = async () => {
+    // try {
+    //   const message = await client.sendAsync({
+    //     text: `${thongTin.HoTen} - ${thongTin.MaVi}`,
+    //     from: 'mrtungpro123@gmail.com',
+    //     to: 'minhtungle411@gmail.com',
+    //     cc: 'minhtungle.giap@gmail.com',
+    //     subject: 'Người dùng đăng ký vé',
+    //   });
+    //   console.log(message);
+    // } catch (err) {
+    //   console.error(err);
+    // };
+  }
+  //#endregion
+
   //#region Xử lý ảnh
   const thayDoiViTriAnh = (p: string) => {
     switch (p) {
@@ -129,6 +154,7 @@ export default function Home() {
         link.href = imageBase64;
         link.download = imgName;
         link.click();
+        guiMail();
         // thayDoiViTriAnh("macdinh");
       });
     };
