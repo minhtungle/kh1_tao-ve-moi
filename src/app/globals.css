@@ -139,23 +139,7 @@ main {
   box-shadow: 10px 5px 10px black;
 }
 
-.gallery > img {
-  grid-area: 1/1;
-  width: 130px;
-  aspect-ratio: 0.866;
-  object-fit: cover;
-  clip-path: polygon(0% 25%,0% 75%,50% 100%,100% 75%,100% 25%,50% 0);
-  transform: translate(var(--_x,0),var(--_y,0)) scale(var(--_t,1));
-  cursor: pointer;
-  transition: .2s linear;
-}
-.gallery > img:hover {
-  filter: grayscale(0);
-  z-index: 1;
-  --_t: 1.2;
-}
 #img-overlay {
-  position: absolute;
   z-index: 1;
   height: 100%;
   transform: translate(0px, 0px) scale(1);
@@ -223,9 +207,6 @@ main {
 
 .text-gradient {
   background: linear-gradient(to right, #ff8a00 0%, #dd4c4f 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
 }
 
 /* Section thu moi */
@@ -241,9 +222,12 @@ main {
 }
 #thumoi-img-thuyen {
   position: absolute;
-  transform: translateY(-15%);
+  /* transform: translateY(-15%);
 
-  width: 60%;
+  width: 50%; */
+
+  width: 25%;
+  z-index: 4;
 
   animation: floating 20s infinite ease-in-out;
 }
@@ -277,7 +261,8 @@ main {
 
 #thumoi-body-container {
   position: absolute;
-  transform: translateY(45%);
+  /* transform: translateY(45%); */
+  /* top: 47%; */
 
   display: flex;
   justify-content: center;
@@ -286,9 +271,10 @@ main {
   background: linear-gradient(to bottom, #58b7aa 0%, #086168 100%);
   width: 35%;
   aspect-ratio: 1/1;
+  border-radius: 50%;
 
   overflow: hidden;
-  clip-path: polygon(0% 25%,0% 75%,50% 100%,100% 75%,100% 25%,50% 0);
+  /* clip-path: polygon(0% 25%,0% 75%,50% 100%,100% 75%,100% 25%,50% 0); */
 }
   #thumoi-body-container > #thumoi-body-img-container{
     display: flex;
@@ -297,9 +283,10 @@ main {
 
     width: 90%;
     aspect-ratio: 1/1;
+    border-radius: 50%;
 
     overflow: hidden;
-    clip-path: polygon(0% 25%,0% 75%,50% 100%,100% 75%,100% 25%,50% 0);
+    /* clip-path: polygon(0% 25%,0% 75%,50% 100%,100% 75%,100% 25%,50% 0); */
   }
 
 #thumoi-footer-container {
@@ -307,7 +294,7 @@ main {
   bottom: 0;
 }
 @keyframes floating {
-  0%   { transform: translate(0%, -15%) rotate(0deg) ; }
+  /* 0%   { transform: translate(0%, -15%) rotate(0deg) ; }
   10%  { transform: translate(4%, -19%) rotate(-10deg) ; }
   20%  { transform: translate(-4%, -15%) rotate(0deg) ; }
   30%  { transform: translate(4%, -19%) rotate(-10deg) ; }
@@ -317,7 +304,54 @@ main {
   70%  { transform: translate(4%, -19%) rotate(-10deg) ; }
   80%  { transform: translate(-4%, -15%) rotate(0deg) ; }
   90%  { transform: translate(4%, -19%) rotate(-10deg) ; }
-  100% { transform: translate(0%, -15%) rotate(0deg) ; } 
+  100% { transform: translate(0%, -15%) rotate(0deg) ; }  */
+
+  0%   { 
+    transform: translate(-120%, 60%) rotate(-20deg) scaleX(1);
+    z-index: 3;
+   }
+
+  10%  { 
+    transform: translate(-72%, 60%) rotate(-25deg) scaleX(1);
+    z-index: 3;
+  }
+  20%  { 
+    transform: translate(-24%, 60%) rotate(-20deg) scaleX(1);
+    z-index: 3;
+  }
+  30%  { 
+    transform: translate(24%, 60%) rotate(-25deg) scaleX(1);
+    z-index: 3;
+   }
+  40%  { 
+    transform: translate(72%, 60%) rotate(-20deg) scaleX(1);
+    z-index: 3;
+  }
+  50%  { 
+    transform: translate(120%, 60%) rotate(20deg) scaleX(-1);
+    z-index: 1;
+   }
+
+  60%  { 
+    transform: translate(72%, 60%) rotate(20deg) scaleX(-1);
+    z-index: 1;
+   }
+  70%  {
+     transform: translate(24%, 60%) rotate(25deg) scaleX(-1);
+    z-index: 1;
+  }
+  80%  {
+     transform: translate(-24%, 60%) rotate(20deg) scaleX(-1);
+    z-index: 1;
+   }
+  90%  {
+     transform: translate(-72%, 60%) rotate(25deg) scaleX(-1);
+    z-index: 1;
+  }
+  100% { 
+    transform: translate(-120%, 60%) rotate(-20deg) scaleX(1);
+    z-index: 3;
+  } 
 }
 @keyframes zoom {
   0%   {transform: scale(1);}

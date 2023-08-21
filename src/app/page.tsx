@@ -25,7 +25,7 @@ interface ViTriAnhDto {
   scale: number
 };
 export default function Home() {
-  const imgContainerRef = useRef<HTMLDivElement>(null);
+  const sectionThuMoiRef = useRef<HTMLDivElement>(null);
   const [modal, setModal] = useState(false);
   const [validated, setValidated] = useState(false);
   const [thongTin, setThongTin] = useState<ThongTinDto>({
@@ -114,7 +114,7 @@ export default function Home() {
       // console.log(thongTin);
       if (thongTin.FileSrc) {
         // Tải ảnh
-        let imgSrc = "", imgName = `UnicornUltra-${thongTin.HoTen}.png`;
+        let imgSrc = "", imgName = `[UnicornUltra]ThuMoi.png`;
         // const imgBlob = new Blob([thongTin.File], { type: "image/jpeg" });
         // const link = document.createElement("a");
         // link.href = thongTin.FileSrc;
@@ -122,21 +122,20 @@ export default function Home() {
         // document.body.appendChild(link);
         // link.click();
         // document.body.removeChild(link);
-        const imgContainer: any = imgContainerRef.current;
+        const container: any = sectionThuMoiRef.current;
 
-        html2canvas(imgContainer)
-          .then(canvas => {
-            const imgData = canvas.toDataURL('image/png');
-            const link = document.createElement('a');
-            link.href = imgData;
-            link.download = imgName;
-            link.click();
-            // thayDoiViTriAnh("macdinh");
-            setModal(false);
-          })
-          .catch(error => {
-            console.error('Error creating combined image:', error);
-          });
+        html2canvas(container).then(canvas => {
+          // Chuyển đổi canvas thành dữ liệu ảnh (base64)
+          const imageBase64 = canvas.toDataURL("image/png");
+
+          // Tạo một đường dẫn tải về ảnh
+          const link = document.createElement("a");
+          link.href = imageBase64;
+          link.download = imgName;
+          link.click();
+          // thayDoiViTriAnh("macdinh");
+          setModal(false);
+        });
       };
     };
   };
@@ -149,7 +148,7 @@ export default function Home() {
   //#endregion
   return (
     <main>
-      <Container className="position-relative" id="section-thumoi">
+      <Container className="position-relative" id="section-thumoi" ref={sectionThuMoiRef}>
         <img src="./section-thumoi/img-banner.png" id="thumoi-img-banner" />
         {/* Banner-header */}
         <div className="" id="thumoi-header-container">
@@ -178,7 +177,7 @@ export default function Home() {
             color=""
             className="align-center" />
         </Button>
-        <div id="thumoi-body-container" ref={imgContainerRef}>
+        <div className="box-shadow" id="thumoi-body-container">
           <div id="thumoi-body-img-container">
             {/* Btn - vị trí */}
             <Button className="box-shadow" variant="secondary" size="sm" id="btn-moveUp" onClick={() => thayDoiViTriAnh("up")}>
@@ -223,7 +222,9 @@ export default function Home() {
           {/* Họ tên */}
           <Row>
             <Col className="text-center">
-              <h5 className="ff-Valky-Bold text-white">Doanh nhân: Hoà Phạm</h5>
+              <span className="ff-Valky-Bold text-white" style={{
+                fontSize: "1rem"
+              }}>Doanh nhân: Hoà Phạm</span>
             </Col>
           </Row>
           {/* Tham gia */}
