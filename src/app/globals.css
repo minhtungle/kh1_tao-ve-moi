@@ -142,26 +142,12 @@ a {
 #btn-chinhsua ~ label, #btn-taixuong ~ label{
   border-radius: 0;
   border: 0px !important;
-  background: linear-gradient(to right, #ff8a00 0%, #dd4c4f 100%);
+  background: linear-gradient(to right, #48efb8 0%, #035663 100%);
 }
 
-#btn-moveUp {
-
-}
-#btn-moveDown {
-  
-}
-#btn-moveLeft {
- 
-}
-#btn-moveRight {
-
-}
-#btn-scaleUp {
-
-}
-#btn-scaleDown {
-  
+#btn-tailen, #btn-dongy, #btn-moveUp , #btn-moveDown , #btn-moveLeft , #btn-moveRight , #btn-scaleUp, #btn-scaleDown {
+  border: 1px solid white !important;
+  background: linear-gradient(to bottom, #48efb8 0%, #035663 100%);
 }
 
 .ff-BeVietNam-Bold {
@@ -217,7 +203,7 @@ a {
   object-fit: cover;
 }
 #thumoi-img-thuyen {
-  width: 70%;
+  width: 65%;
   /* transform: translate(0%, 0%); */
   animation: floating 20s infinite ease-in-out;
 }
@@ -262,7 +248,7 @@ a {
 #thumoi-body-container .thumoi-img-avt-container-layer1 {
   z-index: 1;
   position: absolute;
-  top: 60%;
+  top: 50%;
 
   background: linear-gradient(to bottom, #96e6c1 0%, #6ccca0 100%);
   width: 60%;
@@ -283,7 +269,7 @@ a {
 
 #modal-chinhsua .thumoi-img-avt-container-layer1 {
   background: linear-gradient(to bottom, #96e6c1 0%, #6ccca0 100%);
-  width: 80%;
+  width: 60%;
   aspect-ratio: 1/1;
   border-radius: 50%;
 
@@ -300,7 +286,7 @@ a {
   }
 
 #thumoi-hoten-container {
-  transform: translate(0%, 240%);
+  transform: translate(0%, 210%);
 }
 
 #thumoi-footer-container {

@@ -16,7 +16,9 @@ import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 
 interface ThongTinDto {
   FileSrc?: string,
+  STT?: number,
   HoTen?: string,
+  MaCode?: string,
   MaVi?: string
 };
 interface ViTriAnhDto {
@@ -30,7 +32,9 @@ export default function Home() {
   const [validated, setValidated] = useState(false);
   const [thongTin, setThongTin] = useState<ThongTinDto>({
     FileSrc: "./avt.jpeg",
+    STT: 0,
     HoTen: "",
+    MaCode: "",
     MaVi: ""
   });
   const [viTriAnh, setViTriAnh] = useState<ViTriAnhDto>({
@@ -41,29 +45,6 @@ export default function Home() {
   const anhStyle = {
     transform: `translate(${viTriAnh.translateX}rem, ${viTriAnh.translateY}rem) scale(${viTriAnh.scale})`,
   }
-  //#region Mail
-  // const client = new SMTPClient({
-  //   user: 'MinhTung',
-  //   password: 'Mail2023@1',
-  //   host: 'mrtungpro123@gmail.com',
-  //   ssl: true,
-  // });
-
-  const guiMail = async () => {
-    // try {
-    //   const message = await client.sendAsync({
-    //     text: `${thongTin.HoTen} - ${thongTin.MaVi}`,
-    //     from: 'mrtungpro123@gmail.com',
-    //     to: 'minhtungle411@gmail.com',
-    //     cc: 'minhtungle.giap@gmail.com',
-    //     subject: 'Người dùng đăng ký vé',
-    //   });
-    //   console.log(message);
-    // } catch (err) {
-    //   console.error(err);
-    // };
-  }
-  //#endregion
 
   //#region Xử lý ảnh
   const thayDoiViTriAnh = (p: string) => {
@@ -115,6 +96,28 @@ export default function Home() {
   };
   //#endregion
   //#region Xử lý thông tin
+  const danhSachKH: Array<ThongTinDto> = require("./data/danhSachKH.json");
+  const xacThucMaCode = (e: any) => {
+    let maCode = e.currentTarget.value;
+    let khachHang = danhSachKH.find(x => x.MaCode == maCode);
+    if (khachHang) {
+      setThongTin(prev => ({
+        ...prev,
+        STT: khachHang?.STT,
+        HoTen: khachHang?.HoTen,
+        MaCode: khachHang?.MaCode,
+        MaVi: khachHang?.MaVi,
+      }));
+    } else {
+      setThongTin(prev => ({
+        ...prev,
+        STT: 0,
+        HoTen: "",
+        MaCode: maCode,
+        MaVi: "",
+      }));
+    };
+  };
   const taiLen = () => {
     thayDoiViTriAnh("macdinh");
     let iptFile = document.getElementById("ipt-file");
@@ -154,7 +157,6 @@ export default function Home() {
         link.href = imageBase64;
         link.download = imgName;
         link.click();
-        guiMail();
         // thayDoiViTriAnh("macdinh");
       });
     };
@@ -197,7 +199,17 @@ export default function Home() {
             </Col>
             <Col md="12" className="text-center d-flex justify-content-center align-items-center flex-column" id="thumoi-hoten-container">
               <img className="" src="./section-thumoi/img-kinhmoi.png" id="thumoi-img-kinhmoi" />
-              <span className="ff-Valky-Bold text-white" id="thumoi-hoten-text">{thongTin.HoTen == "" ? "__________________" : thongTin.HoTen}</span>
+              <span className="ff-Valky-Bold text-white" id="thumoi-hoten-text">
+                {
+                  (()=>{
+                    if(thongTin.HoTen == "" || thongTin.MaCode == ""){
+                      return "__________________";
+                    }else{
+                      return `${thongTin.HoTen} | ${thongTin.MaCode}`
+                    }
+                  })()
+                }
+              </span>
               <img src="./section-thumoi/img-thamgia.png" id="thumoi-img-thamgia" />
             </Col>
           </Row>
@@ -317,40 +329,54 @@ export default function Home() {
                 </Button>
               </ButtonGroup>
             </ButtonToolbar>
+            <hr></hr>
+            {/* Mã code */}
             <Form.Group className="mb-3">
-              <Form.Label>Họ và tên <span className="text-danger">*</span></Form.Label>
+              <Form.Label>Mã code <span className="text-danger">*</span></Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Nhập mã 6 ký tự BTC cung cấp"
+                value={thongTin.MaCode}
+                onChange={(e) => xacThucMaCode(e)}
+              />
+            </Form.Group>
+            {/* Số thứ tự */}
+            <Form.Group className="mb-3" as={Col} sm="6" md="12">
+              <Form.Label>Số thứ tự</Form.Label>
               <Form.Control
                 required
                 type="text"
-                placeholder="Nhập thông tin ..."
+                placeholder=""
+                value={thongTin.STT}
+                disabled
+              />
+            </Form.Group>
+            {/* Họ tên */}
+            <Form.Group className="mb-3" as={Col} sm="6" md="12">
+              <Form.Label>Họ và tên</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder=""
                 value={thongTin.HoTen}
-                onChange={(e) => thayDoiThongTin({
-                  HoTen: e.currentTarget.value
-                })} />
-              <Form.Control.Feedback type="invalid">
-                Không bỏ trống.
-              </Form.Control.Feedback>
+                disabled
+              />
             </Form.Group>
             {/* Mã ví */}
-            <Form.Group className="mb-3">
-              <Form.Label>Mã ví <span className="text-danger">*</span></Form.Label>
+            <Form.Group className="mb-3" as={Col} md="12">
+              <Form.Label>Mã ví</Form.Label>
               <Form.Control
                 required
                 type="text"
-                placeholder="Mã 42 ký tự ..."
+                placeholder=""
                 value={thongTin.MaVi}
-                onChange={(e) => thayDoiThongTin({
-                  MaVi: e.currentTarget.value
-                })}
+                disabled
               />
-              <Form.Control.Feedback type="invalid">
-                Không bỏ trống.
-              </Form.Control.Feedback>
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setModal(false)}>Đồng ý</Button>
+          <Button variant="secondary" id="btn-dongy" onClick={() => setModal(false)}>Đồng ý</Button>
         </Modal.Footer>
       </Modal>
     </main >
